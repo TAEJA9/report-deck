@@ -6,7 +6,7 @@ export { PRESETS, themeCss } from './theme.mjs'
 const KIT = new URL('./', import.meta.url)
 const read = f => fs.readFileSync(new URL(f, KIT), 'utf8')
 
-export function deck({ title, sections = [], logo = '', theme = 'blue' }) {
+export function deck({ title, sections = [], logo = '', theme = 'blue', divStyle = 'grad' }) {
   const names = sections.map(s => s.name)
   const logoHtml = logo ? `<span class="logo">${logo}</span>` : ''
   const pg = '<span class="pg">0</span>'
@@ -20,7 +20,8 @@ export function deck({ title, sections = [], logo = '', theme = 'blue' }) {
     return `<section class="slide s-toc"><div class="pad"><div class="eyebrow">${eyebrow}</div><h2>목차</h2><div class="toc${cls}"${st}>${sections.map((s, i) => `<div class="ti${i === hot ? ' hot' : ''}"><span class="n">0${i + 1}</span><h3>${s.name}</h3><ul>${(s.sub || '').split(', ').filter(Boolean).map(x => `<li>${x}</li>`).join('')}</ul></div>`).join('')}</div></div>${logoHtml}${pg}</section>`
   }
 
-  const div = i => `<section class="slide s-div"><div class="pad"><span class="dn">0${i + 1}</span><h2>${names[i]}</h2>${sections[i].sub ? `<p class="lead" style="color:rgba(255,255,255,.85);margin-top:24px">${sections[i].sub}</p>` : ''}<div class="didx">${names.map((t, j) => `<span class="${j === i ? 'on' : ''}"><b>0${j + 1}</b>${t}</span>`).join('')}</div></div>${logoHtml}${pg}</section>`
+  // 간지 스타일: 'grad'(기본, 그라데이션 바탕), 'plain'(흰 바탕, 큰 번호), 'split'(왼쪽 그라데이션 칸에 번호). 한 덱 안에서는 하나로 통일
+  const div = (i, o = {}) => `<section class="slide s-div ${o.style || divStyle}"><div class="pad"><span class="dn">0${i + 1}</span><h2>${names[i]}</h2>${sections[i].sub ? `<p class="lead" style="color:rgba(255,255,255,.85);margin-top:24px">${sections[i].sub}</p>` : ''}<div class="didx">${names.map((t, j) => `<span class="${j === i ? 'on' : ''}"><b>0${j + 1}</b>${t}</span>`).join('')}</div></div>${logoHtml}${pg}</section>`
 
   // n: 섹션 번호(1부터) 또는 eyebrow 문자열. cls: 추가 클래스(보통 비움)
   const slide = (n, h, body, cls = '') => `<section class="slide ${cls}"><div class="pad"><div class="eyebrow">${typeof n === 'number' ? sec(n) : n}</div><h2>${h}</h2>${body}</div>${pg}</section>`

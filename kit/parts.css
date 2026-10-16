@@ -398,3 +398,26 @@
 /* 표지 이미지가 화면 캡처일 때: imgFit: 'contain' 이면 자르지 않고 통째로, 연한 바탕 위에 */
 .s-cover .right.fit { display: flex; align-items: center; justify-content: center; padding: 64px; background: var(--sky); }
 .s-cover .right.fit img { width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: 20px; box-shadow: 0 20px 50px rgba(15, 27, 51, .14); }
+
+/* 카드, 글머리 목록: 점 대신 줄 구분(글머리 점 금지 규칙) */
+.cd li, .bl li { padding-left: 0; } .cd li::before, .bl li::before { display: none; }
+.cd ul li + li { border-top: 1px solid rgba(15, 27, 51, .08); padding-top: 10px; }
+.cd.hot ul li + li { border-top-color: rgba(255, 255, 255, .22); }
+.bl li + li { border-top: 1px solid var(--line); padding-top: 18px; }
+.cd li.minus, .bl li.minus { color: var(--bad); }
+.loop .n.hot, .steps .s.key { background: var(--grad); }
+
+/* 간지 스타일: plain(흰 바탕), split(왼쪽 그라데이션 칸). 기본 grad 는 위의 .s-div */
+.s-div.plain, .s-div.split { background: var(--paper) !important; color: var(--ink); }
+.s-div.plain::after, .s-div.split::after, .s-div.plain::before { display: none; }
+.s-div.plain .dn { color: var(--blue); }
+.s-div.plain .lead, .s-div.split .lead { color: var(--sub) !important; }
+.s-div.plain .didx, .s-div.split .didx { border-top-color: var(--line); }
+.s-div.plain .didx span, .s-div.split .didx span { color: #9aa3b2; }
+.s-div.plain .didx span.on, .s-div.split .didx span.on { color: var(--blue); }
+.s-div.plain .pg, .s-div.plain .logo, .s-div.split .pg, .s-div.split .logo { color: #a3aec4; }
+.s-div.split::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 620px; height: auto; border-radius: 0; background: var(--grad); }
+.s-div.split .pad { padding-left: 760px; }
+.s-div.split .dn { position: absolute; left: 110px; top: 50%; translate: 0 -50%; color: #fff; font-size: 240px; }
+.s-div.split .didx { left: 760px; }
+.s-div.split .logo { color: rgba(255, 255, 255, .8); }

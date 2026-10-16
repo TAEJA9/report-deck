@@ -11,6 +11,7 @@ const D = deck({
     { name: '평가', sub: '좋은 점, 걱정되는 점' },
     { name: '결론', sub: '권장안, 일정' },
     { name: '더 많은 틀', sub: '요약, 강조, 일정, 비율, 비교, 사람, 질문' },
+    { name: '카드와 목록', sub: '개요표, 이미지 카드, 순환, 칩 흐름, 카드, 폰 화면, 화면과 설명, 번호 목록' },
   ],
 })
 
@@ -52,7 +53,7 @@ const slides = [
     <div class="minus"><b>걱정</b><p>기존 이슈 도구와 연동이 필요</p></div>
   </div></div>${D.src('lr: 이름표와 설명 줄, 두 열')}`),
 
-  D.div(1),
+  D.div(1, { style: 'plain' }),
   D.slide(2, '후보 세 가지', `<table class="tbl" style="margin-top:48px"><thead><tr><th style="width:240px">후보</th><th>강점</th><th>약점</th><th style="width:220px">월 비용</th></tr></thead><tbody>
     <tr><td>A</td><td>문서와 채팅이 한 화면</td><td>대용량 파일 느림</td><td class="num">42만 원</td></tr>
     <tr class="hot"><td>B</td><td>이슈 보드, 자동화 규칙</td><td>처음 배우기 어려움</td><td class="num">48만 원</td></tr>
@@ -83,7 +84,7 @@ const slides = [
     ${[0, 1, 2, 3].map(s => `<span class="t" style="left:${s * 513}px">${s}초</span>`).join('')}
   </div><p class="axis-note">시간 축. 점끼리 400px 이상 떨어뜨린다</p>${D.src('axis: 측정값 비교')}`),
 
-  D.div(2),
+  D.div(2, { style: 'split' }),
   D.slide(3, '써 본 사람들의 말', `<div class="quote"><span>개발팀 시범 사용자</span><p>“배포 알림이 한곳에 모이니 확인할 데가 줄었어요”</p></div><div class="c3">
     <div><h3>좋았던 점</h3><p>회의 전 안건 공유</p><p>문서 찾는 시간 감소</p></div>
     <div><h3>헷갈린 점</h3><p>알림이 너무 많음</p><p>권한 설정 위치</p></div>
@@ -199,6 +200,54 @@ const slides = [
     <div><b>62<small>명</small></b><em class="up">+62명</em><span>6주 정착 사용자</span></div>
     <div class="warn"><b>1<small>건</small></b><em class="down">미해결</em><span>보안 검토</span></div>
   </div>${D.src('met + em: 지난 기간 대비 증감')}`),
+  D.div(5),
+  D.slide(6, '한눈에 보기', `<div class="ov">
+    <div class="k">대상</div><div class="v">기획, 개발 2개 팀 <small>ov: 왼쪽 항목, 오른쪽 큰 값과 아래 설명. fact 보다 값이 크고 칸이 둘</small></div>
+    <div class="k">기간</div><div class="v">6주 시범 운영 <small>11월 첫 주 시작, 매주 금요일 점검</small></div>
+    <div class="k">예산</div><div class="v">월 50만 원 이내 <small>시범 기간은 무료 체험판</small></div>
+    <div class="k">목표</div><div class="v">회의와 메일 줄이기 <small>회의 시간, 메일 수, 문서 찾는 시간 비교</small></div>
+  </div>`),
+  D.slide(6, '세 가지 기능', `<div class="gal g3">
+    ${['문서', '채팅', '이슈 보드'].map(n => `<figure><img src="img/wide.svg" alt="기능 화면 자리"><figcaption><b>${n}</b>gal g3: 이미지 카드 셋. 사진이나 배너가 있을 때</figcaption></figure>`).join('')}
+  </div><p class="flex-note">flex-note: 아래에 한 줄 결론</p>`),
+  D.slide(6, '한 주의 순환', `<div class="loop">
+    <div class="n"><h3>안건 올리기</h3><p>월요일까지 문서로</p></div><div class="ar">→</div>
+    <div class="n hot"><h3>회의</h3><p>화요일, 결정만</p></div><div class="ar">→</div>
+    <div class="n"><h3>할 일</h3><p>보드로 바로</p></div><div class="ar">→</div>
+    <div class="n"><h3>회고</h3><p>금요일 15분</p></div>
+  </div><div class="met" style="margin-top:auto">
+    <div><b>4<small>단계</small></b><span>loop: 가로 순환 칸과 화살표</span></div><div><b>15<small>분</small></b><span>금요일 회고</span></div>
+    <div><b>1<small>회</small></b><span>주간 회의</span></div><div><b>0<small>건</small></b><span>메일 안건</span></div>
+  </div>`),
+  D.slide(6, '회의 진행 순서', `<div class="steps">
+    ${['인사', '<b>지난 결정 확인</b>', '안건 1', '안건 2', '할 일 정리', '다음 일정'].map((t, i) => `<span class="s${i === 1 ? ' key' : ''}"><small>${i + 1}</small>${t}</span>${i < 5 ? '<span class="ar">›</span>' : ''}`).join('')}
+  </div><div class="gal g4 tall">
+    ${['안건 화면', '결정 기록', '할 일 보드', '회고 화면'].map(n => `<figure><img src="img/shot.svg" alt="화면 자리"><figcaption><b>${n}</b>steps 칩 흐름 + gal g4</figcaption></figure>`).join('')}
+  </div>`),
+  D.slide(6, '팀별 쓰임새 카드', `<div class="cards c3">
+    <div class="cd"><span class="k">기획팀</span><h3>문서 중심</h3><ul><li>안건을 문서로</li><li>버전 기록</li><li class="minus">메일 습관이 남음</li></ul></div>
+    <div class="cd hot"><span class="k">개발팀</span><h3>이슈 중심</h3><ul><li>요청과 버그를 한 보드에</li><li>배포 알림 모으기</li></ul></div>
+    <div class="cd"><span class="k">디자인팀</span><h3>리뷰 중심</h3><ul><li>시안에 바로 댓글</li><li class="minus">큰 파일 업로드 느림</li></ul></div>
+  </div><p class="flex-note">cards c3: 카드 셋, 강조 카드는 cd hot. 목록은 점 대신 줄로 나눈다</p>`),
+  D.slide(6, '요금제 네 가지', `<div class="cards c4">
+    ${[['무료', '체험판', '10명까지'], ['팀', '팀 요금제', '인원 제한 없음'], ['기업', '기업 요금제', '보안 기능'], ['교육', '학교용', '학생 무료']].map(([k, h, p], i) => `<div class="cd${i === 1 ? ' hot' : ''}"><span class="k">${k}</span><h3>${h}</h3><p>${p}</p></div>`).join('')}
+  </div><div class="cd ours" style="margin-top:32px"><span class="k">우리에게</span><p>cards c4 + cd ours: 우리 쪽 시사점 칸은 ours 색</p></div>`),
+  D.slide(6, '모바일 화면 설명', `<div class="ph p2" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+    ${['홈', '채팅', '알림'].map(n => `<figure><img src="img/phone.svg" alt="폰 화면 자리"><figcaption><b>${n}</b>ph: 폰 화면 왼쪽, 설명 오른쪽. 열 수는 style 로</figcaption></figure>`).join('')}
+  </div>`),
+  D.slide(6, '카톡 알림 예시', `<div class="shotx wide"><div class="imgs"><figure><img src="img/square.svg" alt="이미지 자리"><figcaption>shotx: 화면 하나와 오른쪽 설명 목록</figcaption></figure></div><div class="txt">
+    <ul class="bl" style="margin-top:0"><li><b>마감 알림</b> 하루 전 담당자에게</li><li><b>언급</b> 이름이 불리면 바로</li><li><b>요약</b> 매일 아침 어제 바뀐 것</li><li class="minus">알림이 많으면 꺼 두는 사람이 생김</li></ul>
+  </div></div>`),
+  D.slide(6, '잘된 점과 아쉬운 점', `<div class="ev">
+    <div class="it"><i>1</i><div><h3>회의가 짧아졌다</h3><p>ev: 번호 목록 2열. 잘한 점, 원칙</p></div></div>
+    <div class="it"><i>2</i><div><h3>문서가 한곳에</h3><p>검색 한 번에 찾는다</p></div></div>
+    <div class="it"><i>3</i><div><h3>요청이 안 묻힌다</h3><p>보드에 바로 남는다</p></div></div>
+    <div class="it"><i>4</i><div><h3>협력사와 같은 화면</h3><p>외부 계정 검토 뒤</p></div></div>
+  </div>`),
+  D.slide(6, '두 후보 나란히', `<div class="two even" style="flex:none">
+    <div class="cd hot"><span class="k">후보 B</span><h3>기능 많고 비쌈</h3><ul><li>이슈 보드와 자동화</li><li>1인 월 2만 원</li></ul></div>
+    <div class="cd"><span class="k">후보 C</span><h3>싸고 가벼움</h3><ul><li>메신저 중심</li><li class="minus">권한 관리 단순</li></ul></div>
+  </div><p class="flex-note">two even + cd: 둘을 카드로 나란히</p>`),
   D.close({ h: '후보 B로<br>전사 도입 준비', lead: '정리 장. 핵심 문장 세 줄 이내와 기억할 것 몇 개를 알약으로 둔다.', facts: ['후보 B', '알림 규칙', '보안 검토', '1월 전사 도입'] }),
 ]
 

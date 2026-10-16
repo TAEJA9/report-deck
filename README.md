@@ -66,6 +66,7 @@ node <스킬 경로>/kit/shot.cjs deck.html 1,4,7   # 넘친 장, 위계가 무�
 ### 결과 받는 방식
 
 - 기본은 아티팩트(Claude Code 가 claude.ai 와 연결돼 있을 때). 덱을 올리고 비공개 링크를 준다.
+- PDF, PPTX: `node kit/export.cjs deck.html pdf|pptx`. PDF 는 글자가 살아 있고, PPTX 는 장마다 그림 한 장과 발표 노트(글자 수정은 안 됨, 구글 드라이브에 올리면 구글 슬라이드로 열린다). PPTX 는 `pptxgenjs` 가 필요하다.
 - "파일로", "올리지 말고" 라고 하면 게시하지 않는다. 메일이나 메신저로 보낼 거면 이미지까지 html 안에 넣은 파일 하나(`D.write(out, slides, { inline: true })`)를, 경로만 원하면 `deck.html` 경로를 준다.
 
 ## 테마

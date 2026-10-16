@@ -94,7 +94,7 @@ h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -0.03
 .s-div .pg, .s-div .logo { color: rgba(255,255,255,.6); }
 
 /* 개요 */
-.ov { display: grid; grid-template-columns: max-content minmax(0, 1fr); margin-top: 56px; margin-bottom: auto; border-top: 4px solid var(--ink); }
+.ov { display: grid; grid-template-columns: max-content minmax(0, 1fr); margin-top: 56px; margin-bottom: auto; border-top: var(--rule); }
 .ov > div { padding-block: 22px; border-bottom: 2px solid var(--line); }
 .ov .k { font: 700 32px/1.6 var(--display); color: var(--blue); padding-right: 96px; }
 .ov .v { font: 900 50px/1.25 var(--display); letter-spacing: -0.02em; }
@@ -176,7 +176,7 @@ h2 { font-size: 76px; font-weight: 900; line-height: 1.15; letter-spacing: -0.03
 
 /* 목소리 */
 .voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; margin-top: 56px; }
-.vc { border-top: 6px solid var(--ink); padding-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+.vc { border-top: var(--rule); padding-top: 28px; display: flex; flex-direction: column; gap: 14px; }
 .vc .k { font: 700 26px var(--display); }
 .vc.good .k { color: var(--good); } .vc.bad .k { color: var(--bad); }
 .vc h3 { font-size: 44px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.25; }

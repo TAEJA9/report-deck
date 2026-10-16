@@ -49,7 +49,7 @@
 
 /* 수치 칩 */
 .met { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 44px; }
-.met div { border-top: 5px solid var(--blue); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+.met div { border-top: var(--rule); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; }
 .met b { font: 900 64px/1 var(--display); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
 .met b small { font-size: 32px; margin-left: 4px; }
 .met span { font: 600 26px/1.4 var(--body); color: var(--sub); }
@@ -76,7 +76,7 @@
 .src2 { font-size: 22px; }
 
 /* 정리표 */
-.fact { display: grid; grid-template-columns: 190px 640px minmax(0, 1fr); margin-top: 52px; border-top: 4px solid var(--ink); }
+.fact { display: grid; grid-template-columns: 190px 640px minmax(0, 1fr); margin-top: 52px; border-top: var(--rule); }
 .fact > div { padding: 20px 0; border-bottom: 2px solid var(--line); }
 .fact .k { font: 700 30px/1.45 var(--display); color: var(--blue); }
 .fact .v { font: 900 34px/1.3 var(--display); letter-spacing: -0.02em; padding-right: 40px; }
@@ -100,7 +100,7 @@
 
 /* 본 학습 9단계 + 화면 */
 .callg { display: grid; grid-template-columns: minmax(0, 1fr) 900px; gap: 72px; margin-top: 48px; }
-.st9 { display: flex; flex-direction: column; border-top: 4px solid var(--ink); }
+.st9 { display: flex; flex-direction: column; border-top: var(--rule); }
 .st9 > div { display: flex; gap: 22px; align-items: baseline; padding: 11px 18px; border-bottom: 2px solid var(--line); font: 600 29px var(--body); }
 .st9 i { font: normal 900 29px var(--display); color: var(--blue); width: 34px; }
 .st9 .key { background: var(--sky); border-radius: 14px; }
@@ -111,7 +111,7 @@
 
 /* 이름표 + 설명 줄 */
 .lr { display: flex; flex-direction: column; min-width: 0; }
-.lr h3 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; padding-bottom: 16px; border-bottom: 4px solid var(--ink); }
+.lr h3 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; padding-bottom: 16px; border-bottom: var(--rule); }
 .lr div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; padding: 19px 0; border-bottom: 2px solid var(--line); }
 .lr div b { font: 900 25px/1.5 var(--display); color: var(--blue); }
 .lr div p { margin: 0; font: 500 27px/1.45 var(--body); }
@@ -124,12 +124,12 @@
 .lv .tr i { display: block; width: 100%; border-radius: 20px 20px 0 0; background: var(--sky-2); padding: 18px; }
 .lv .tr i.hot { background: var(--grad); }
 .lv .tr em { font: normal 800 22px var(--display); color: #3f5a00; background: var(--hi); padding: 4px 12px; border-radius: 999px; }
-.lv .lvl { font: 700 26px var(--display); color: var(--blue); border-top: 4px solid var(--ink); padding-top: 16px; }
+.lv .lvl { font: 700 26px var(--display); color: var(--blue); border-top: var(--rule); padding-top: 16px; }
 .lv .nm { font: 900 32px/1.3 var(--display); letter-spacing: -0.02em; }
 
 /* 기간 행 + 어두운 칸 */
 .sp2 { display: grid; grid-template-columns: minmax(0, 1fr) 640px; gap: 64px; margin-top: 48px; }
-.wk { display: flex; flex-direction: column; border-top: 4px solid var(--ink); }
+.wk { display: flex; flex-direction: column; border-top: var(--rule); }
 .wk > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 18px 0; border-bottom: 2px solid var(--line); }
 .wk b { font: 900 52px/1 var(--display); color: var(--blue); letter-spacing: -0.04em; }
 .wk h3 { font-size: 32px; font-weight: 900; letter-spacing: -0.02em; }
@@ -158,7 +158,7 @@
 
 /* AI 휴먼: 줄 + 오인식 카드 */
 .hm { display: grid; grid-template-columns: minmax(0, 1fr) 700px; gap: 72px; margin-top: 48px; }
-.lines { border-top: 4px solid var(--ink); }
+.lines { border-top: var(--rule); }
 .lines p { margin: 0; padding: 20px 0; border-bottom: 2px solid var(--line); font: 500 29px/1.45 var(--body); }
 .lines b { font-family: var(--display); font-weight: 900; }
 .mis { background: var(--sky); border-radius: 32px; padding: 44px 48px; display: flex; flex-direction: column; gap: 18px; }
@@ -192,7 +192,7 @@
 .quote span { font: 700 24px var(--display); color: var(--blue); }
 .quote p { margin: 10px 0 0; font: 900 40px/1.35 var(--display); letter-spacing: -0.035em; }
 .c3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px; margin-top: 44px; }
-.c3 > div { border-top: 4px solid var(--ink); padding-top: 22px; }
+.c3 > div { border-top: var(--rule); padding-top: 22px; }
 .c3 h3 { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px; }
 .c3 p { margin: 6px 0 0; font: 500 25px/1.45 var(--body); color: var(--sub); }
 
@@ -213,7 +213,7 @@
 .map .pt.sp i { background: var(--ink); }
 .map .usp { position: absolute; left: 70px; right: 70px; top: 188px; border: 3px dashed var(--ours); color: var(--ours); background: #fff; border-radius: 999px; padding: 12px 24px; text-align: center; font: 700 26px var(--display); }
 .who { display: flex; flex-direction: column; gap: 10px; padding: 28px 0; border-bottom: 2px solid var(--line); }
-.who:first-child { border-top: 4px solid var(--ink); }
+.who:first-child { border-top: var(--rule); }
 .who .k { font: 700 24px var(--display); color: var(--blue); }
 .who.sp .k { color: var(--sub); }
 .who h3 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; }
@@ -221,7 +221,7 @@
 
 /* 잘한 점 6칸 */
 .g6 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 56px; margin-block: auto; }
-.g6 > div { border-top: 4px solid var(--ink); padding-top: 24px; }
+.g6 > div { border-top: var(--rule); padding-top: 24px; }
 .g6 i { display: block; font: normal 900 56px/1 var(--display); letter-spacing: -0.04em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .g6 h3 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; margin-top: 16px; }
 .g6 p { margin: 10px 0 0; font: 500 25px/1.45 var(--body); color: var(--sub); }
@@ -275,7 +275,7 @@
 
 /* ── 일반 보고 덱 틀 (10/16 추가) ── */
 /* sum: 요약 세 줄. 번호, 핵심 문장, 근거 */
-.sum { display: flex; flex-direction: column; margin-top: 48px; border-top: 4px solid var(--ink); }
+.sum { display: flex; flex-direction: column; margin-top: 48px; border-top: var(--rule); }
 .sum > div { display: grid; grid-template-columns: 90px minmax(0, 1fr) 520px; gap: 32px; align-items: baseline; padding: 30px 0; border-bottom: 2px solid var(--line); }
 .sum i { font: normal 900 40px/1 var(--display); color: var(--blue); }
 .sum h3 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.3; }
@@ -283,7 +283,7 @@
 
 /* msg: 한 문장 강조. 제목이 메시지, 아래 근거 셋 */
 .msg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px; margin-top: auto; margin-bottom: auto; }
-.msg > div { border-top: 4px solid var(--ink); padding-top: 22px; }
+.msg > div { border-top: var(--rule); padding-top: 22px; }
 .msg b { display: block; font: 900 56px/1.1 var(--display); letter-spacing: -0.03em; color: var(--blue); }
 .msg span { display: block; margin-top: 10px; font: 500 26px/1.45 var(--body); color: var(--sub); }
 
@@ -314,7 +314,7 @@
 
 /* gantt: 일정표. 행 = 일, 열 = 기간. 막대 위치는 style="grid-column: 시작열 / 끝열" (첫 열이 이름이라 기간 1칸 = 2열) */
 .gantt { margin-top: 48px; display: grid; grid-template-columns: 300px repeat(var(--n, 6), minmax(0, 1fr)); row-gap: 14px; }
-.gantt .h { font: 700 24px var(--display); color: var(--sub); padding-bottom: 12px; border-bottom: 3px solid var(--ink); }
+.gantt .h { font: 700 24px var(--display); color: var(--sub); padding-bottom: 12px; border-bottom: var(--rule); }
 .gantt .t { grid-column: 1; font: 700 27px var(--display); align-self: center; padding-right: 20px; }
 .gantt .gbar { height: 44px; border-radius: 10px; background: var(--sky-2); align-self: center; display: flex; align-items: center; padding: 0 16px; font: 700 22px var(--display); color: var(--blue-deep); white-space: nowrap; overflow: hidden; }
 .gantt .gbar.hot { background: var(--grad); color: #fff; }
@@ -323,7 +323,7 @@
 
 /* hbar: 가로 막대 순위 */
 .hbar { display: flex; flex-direction: column; gap: 22px; margin-top: 52px; }
-.hbar > div { display: grid; grid-template-columns: 300px minmax(0, 1fr) 150px; gap: 28px; align-items: center; }
+.hbar > div { display: grid; grid-template-columns: 300px minmax(0, 1fr) 190px; gap: 28px; align-items: center; }
 .hbar .l { font: 700 28px var(--display); }
 .hbar .tr { height: 40px; background: #f0f2f6; border-radius: 8px; overflow: hidden; }
 .hbar .tr i { display: block; height: 100%; background: var(--sky-2); border-radius: 8px; }
@@ -347,7 +347,7 @@
 .donut .pie::after { content: ""; position: absolute; inset: 110px; border-radius: 50%; background: var(--paper); }
 .donut .pie b { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; font: 900 64px/1 var(--display); letter-spacing: -0.03em; }
 .donut .pie b small { margin-top: 8px; font: 600 24px var(--body); color: var(--sub); letter-spacing: 0; }
-.donut ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 4px solid var(--ink); }
+.donut ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: var(--rule); }
 .donut li { display: grid; grid-template-columns: 30px minmax(0, 1fr) 120px; gap: 18px; align-items: center; padding: 20px 0; border-bottom: 2px solid var(--line); font: 600 28px var(--body); }
 .donut li::before { display: none; }
 .donut li i { width: 24px; height: 24px; border-radius: 6px; }
@@ -371,7 +371,7 @@
 
 /* team: 사람, 역할 */
 .team { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 32px; margin-top: 52px; }
-.team > div { border-top: 4px solid var(--ink); padding-top: 22px; display: flex; flex-direction: column; gap: 8px; }
+.team > div { border-top: var(--rule); padding-top: 22px; display: flex; flex-direction: column; gap: 8px; }
 .team img { width: 120px; height: 120px; border-radius: 50%; background: var(--sky); object-fit: cover; margin-bottom: 10px; }
 .team h3 { font-size: 32px; font-weight: 900; } .team .r { font: 700 24px var(--display); color: var(--blue); }
 .team p { margin: 4px 0 0; font: 500 25px/1.45 var(--body); color: var(--sub); }
@@ -421,3 +421,35 @@
 .s-div.split .dn { position: absolute; left: 110px; top: 50%; translate: 0 -50%; color: #fff; font-size: 240px; }
 .s-div.split .didx { left: 760px; }
 .s-div.split .logo { color: rgba(255, 255, 255, .8); }
+
+/* phase: 단계별 로드맵. 칸마다 시기, 단계 이름, 목표, 할 일. 지금 단계는 now, 끝난 단계는 done */
+.phase { display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; gap: 20px; margin-top: 48px; }
+.phase > div { display: flex; flex-direction: column; gap: 12px; }
+.phase .when { font: 800 24px var(--display); color: var(--sub); padding: 14px 20px; background: #f1f3f6; border-radius: 14px; }
+.phase .now .when { background: var(--grad); color: #fff; }
+.phase .done .when { background: var(--sky); color: var(--blue-deep); }
+.phase h3 { font-size: 34px; font-weight: 900; letter-spacing: -0.02em; margin-top: 8px; }
+.phase .goal { font: 700 26px/1.4 var(--display); color: var(--blue); }
+.phase p { margin: 0; font: 500 25px/1.45 var(--body); color: var(--sub); padding-top: 10px; border-top: 1px solid var(--line); }
+.phase .done h3, .phase .done .goal { color: var(--sub); }
+
+/* quad: 2×2 네 칸(SWOT, 2×2 정리). 칸 머리에 글자 표시(S, W, O, T) 와 이름 */
+.quad { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+.quad > div { border-radius: 24px; padding: 30px 36px; display: flex; flex-direction: column; gap: 10px; background: var(--sky); }
+.quad > div.neg { background: #f3f4f7; }
+.quad .hd { display: flex; align-items: baseline; gap: 14px; }
+.quad .hd b { font: 900 44px/1 var(--display); color: var(--blue); }
+.quad .neg .hd b { color: var(--sub); }
+.quad .hd h3 { font-size: 30px; font-weight: 900; }
+.quad p { margin: 0; font: 500 25px/1.45 var(--body); color: var(--ink); }
+.quad p + p { border-top: 1px solid rgba(15, 27, 51, .08); padding-top: 8px; }
+
+/* trio: 이미지 셋. 큰 이미지 하나 왼쪽, 작은 둘 오른쪽 */
+.trio { display: grid; grid-template-columns: 1.55fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; margin-top: 44px; height: 620px; }
+.trio figure { margin: 0; position: relative; border-radius: 22px; overflow: hidden; background: var(--sky); min-height: 0; }
+.trio figure:first-child { grid-row: span 2; }
+.trio img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.trio.fit img { object-fit: contain; padding: 18px; }
+.trio figcaption { position: absolute; left: 16px; bottom: 16px; background: rgba(255, 255, 255, .94); border-radius: 12px; padding: 10px 16px; font: 500 22px var(--body); color: var(--sub); max-width: calc(100% - 32px); }
+.trio figcaption b { color: var(--ink); font-family: var(--display); font-weight: 900; margin-right: 8px; }
+.quad { flex: 1; min-height: 0; grid-template-rows: 1fr 1fr; margin-bottom: 8px; }

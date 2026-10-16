@@ -2,11 +2,11 @@
 import fs from 'node:fs'
 import { pathToFileURL } from 'node:url'
 import { themeCss } from './theme.mjs'
-export { PRESETS, themeCss } from './theme.mjs'
+export { PRESETS, RULES, themeCss } from './theme.mjs'
 const KIT = new URL('./', import.meta.url)
 const read = f => fs.readFileSync(new URL(f, KIT), 'utf8')
 
-export function deck({ title, sections = [], logo = '', theme = 'blue', divStyle = 'grad' }) {
+export function deck({ title, sections = [], logo = '', theme = 'blue', divStyle = 'grad', rules = 'bold' }) {
   const names = sections.map(s => s.name)
   const logoHtml = logo ? `<span class="logo">${logo}</span>` : ''
   const pg = '<span class="pg">0</span>'
@@ -37,7 +37,7 @@ export function deck({ title, sections = [], logo = '', theme = 'blue', divStyle
     // notes: 장마다 발표 노트(글자). 장 수와 같은 길이의 배열, 없는 장은 ''. 하단 '노트' 버튼이나 N 키로 연다
     const notes = extra.notes?.length ? slides.map((_, i) => extra.notes[i] || '') : null
     if (extra.notes && extra.notes.length !== slides.length) console.warn(`⚠ 노트 ${extra.notes.length}개, 장 ${slides.length}장: 순서가 맞는지 확인`)
-    const css = ['deck.css', 'extra.css', 'review.css', 'parts.css'].map(read).join('\n') + '\n' + themeCss(theme) + (extra.css || '')
+    const css = ['deck.css', 'extra.css', 'review.css', 'parts.css'].map(read).join('\n') + '\n' + themeCss(theme, ':root', rules) + (extra.css || '')
     const html = `<title>${title}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

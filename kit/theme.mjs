@@ -19,7 +19,9 @@ const hex2hsl = h => {
 }
 const hsl = (h, s, l) => `hsl(${Math.round(h)} ${Math.round(Math.min(s, 100))}% ${Math.round(Math.max(0, Math.min(l, 100)))}%)`
 
-export function themeVars(theme = 'blue') {
+// rules: 블록 위 구분선. 'bold'(굵은 검정, 기본), 'light'(얇은 회색), 'none'(없음)
+export const RULES = { bold: '4px solid var(--ink)', light: '2px solid var(--line)', none: '0 solid transparent' }
+export function themeVars(theme = 'blue', rules = 'bold') {
   const t = typeof theme === 'string' ? PRESETS[theme] : theme
   if (!t?.accent) throw new Error(`테마를 모름: ${JSON.stringify(theme)} (프리셋: ${Object.keys(PRESETS).join(', ')})`)
   const [h, s, l] = hex2hsl(t.accent)
@@ -31,7 +33,7 @@ export function themeVars(theme = 'blue') {
     '--grey-bar': hsl(h, Math.min(s, 18), 80),
     '--grad': `linear-gradient(115deg, ${grad[0]} 0%, ${grad[1]} 55%, ${grad[2]} 100%)`,
     '--hi': t.hi || '#ffe58a', '--ours': t.ours || t.accent, '--ours-sky': hsl(...hex2hsl(t.ours || t.accent).slice(0, 2), 96),
-    '--stage': hsl(h, cs, 8), '--stage-2': hsl(h, cs, 14), '--bar-line': hsl(h, cs, 24), '--bar-ink': hsl(h, Math.min(s, 30), 80),
+    '--rule': RULES[rules] || RULES.bold, '--stage': hsl(h, cs, 8), '--stage-2': hsl(h, cs, 14), '--bar-line': hsl(h, cs, 24), '--bar-ink': hsl(h, Math.min(s, 30), 80),
   }
 }
-export const themeCss = (theme, sel = ':root') => `${sel}{${Object.entries(themeVars(theme)).map(([k, v]) => `${k}:${v}`).join(';')}}`
+export const themeCss = (theme, sel = ':root', rules) => `${sel}{${Object.entries(themeVars(theme, rules)).map(([k, v]) => `${k}:${v}`).join(';')}}`

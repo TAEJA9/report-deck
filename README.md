@@ -69,6 +69,10 @@ node <스킬 경로>/kit/shot.cjs deck.html 1,4,7   # 넘친 장, 위계가 무�
 - PDF, PPTX: `node kit/export.cjs deck.html pdf|pptx`. PDF 는 글자가 살아 있고, PPTX 는 장마다 그림 한 장과 발표 노트(글자 수정은 안 됨, 구글 드라이브에 올리면 구글 슬라이드로 열린다). PPTX 는 `pptxgenjs` 가 필요하다.
 - "파일로", "올리지 말고" 라고 하면 게시하지 않는다. 메일이나 메신저로 보낼 거면 이미지까지 html 안에 넣은 파일 하나(`D.write(out, slides, { inline: true })`)를, 경로만 원하면 `deck.html` 경로를 준다.
 
+### 내용 검증
+
+`node kit/verify.cjs deck.html sources/` 가 장에 나온 숫자를 모두 자료(`sources/` 에 글로 저장한 것)에서 찾고, 출처 줄 없는 장을 알린다. 시작할 때 "독립 검증" 을 고르면, 덱을 만들지 않은 별도 에이전트가 자료와 덱만 보고 장마다 주장을 판정한다.
+
 ## 테마
 
 ```js

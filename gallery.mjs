@@ -1,7 +1,7 @@
 // 견본 덱: 장 틀을 한 번씩 그리고, 하단 막대에서 테마를 바꿔 본다. kit 를 고친 뒤 깨진 데가 없는지 보는 시험지 겸용.
 // node gallery.mjs → gallery.html (내용은 전부 예시 데이터)
 import { fileURLToPath } from 'node:url'
-import { deck, PRESETS, themeCss } from './kit/deck.mjs'
+import { deck, PRESETS, RULES, themeCss } from './kit/deck.mjs'
 
 const D = deck({
   title: 'report-deck 견본', theme: 'blue', logo: 'report-deck 견본 (예시 데이터)',
@@ -96,7 +96,7 @@ const slides = [
   D.slide(3, '초보자 도움 장치', `<div class="scr n4">
     ${['처음 안내', '도움말', '단축키', '템플릿'].map(n => `<figure style="margin:0"><img src="img/phone.svg" alt="폰 화면 자리"><h3>${n}</h3><p>scr n4: 화면 4개</p></figure>`).join('')}
   </div>`),
-  D.slide(3, '알림 메시지 예시', `<div class="care"><img src="img/square.svg" alt="이미지 자리"><div class="lr" style="border-top:4px solid var(--ink)">
+  D.slide(3, '알림 메시지 예시', `<div class="care"><img src="img/square.svg" alt="이미지 자리"><div class="lr" style="border-top:var(--rule)">
     <div><b>마감 알림</b><p>마감 하루 전 담당자에게</p></div><div><b>언급</b><p>내 이름이 불리면 바로</p></div><div><b>요약</b><p>매일 아침 어제 바뀐 것</p></div>
     <div class="minus"><b>걱정</b><p>care: 큰 이미지 하나와 이름표 줄. 부정 항목은 빨강</p></div>
   </div></div>`),
@@ -159,6 +159,12 @@ const slides = [
     <span class="t">전사 도입</span><span class="gbar" style="grid-column:5 / 8">단계별 확대</span>
     <span class="t">평가 보고</span><span class="gbar ms" style="grid-column:5 / 6">1월 말</span>
   </div>${D.src('gantt: 열 = 기간, 막대는 grid-column 으로 위치. ms 는 마일스톤')}`),
+  D.slide(5, '단계별 로드맵', `<div class="phase">
+    <div class="done"><span class="when">10월</span><h3>비교</h3><span class="goal">후보 하나로 좁히기</span><p>후보 셋 비교, 보안 질문지</p></div>
+    <div class="now"><span class="when">11~12월, 지금</span><h3>시범 운영</h3><span class="goal">두 팀에서 효과 확인</span><p>2개 팀 6주, 주간 점검</p><p>보안 검토</p></div>
+    <div><span class="when">1~2월</span><h3>전사 도입</h3><span class="goal">모든 팀 이전</span><p>단계별 확대, 교육</p></div>
+    <div><span class="when">3월~</span><h3>정착</h3><span class="goal">메일 안건 0건</span><p>협력사 계정, 자동화 규칙</p></div>
+  </div>${D.src('phase: 단계별 로드맵. 시기, 이름, 목표, 할 일. 지금 단계 now, 끝난 단계 done. 날짜 중심이면 road, 기간이 겹치면 gantt')}`),
   D.slide(5, '팀별 하루 사용 시간', `<div class="hbar">
     ${[['개발팀', 96], ['기획팀', 78], ['디자인팀', 54], ['영업팀', 31]].map(([l, v], i) => `<div class="${i ? '' : 'hot'}"><span class="l">${l}</span><span class="tr"><i style="width:${v / 96 * 100}%"></i></span><b>${v}분</b></div>`).join('')}
   </div>${D.src('hbar: 가로 막대 순위. 막대 길이 = 값')}`),
@@ -244,6 +250,17 @@ const slides = [
     <div class="it"><i>3</i><div><h3>요청이 안 묻힌다</h3><p>보드에 바로 남는다</p></div></div>
     <div class="it"><i>4</i><div><h3>협력사와 같은 화면</h3><p>외부 계정 검토 뒤</p></div></div>
   </div>`),
+  D.slide(6, '후보 B의 SWOT', `<div class="quad">
+    <div><div class="hd"><b>S</b><h3>강점</h3></div><p>이슈 보드와 자동화 규칙</p><p>외부 계정 지원</p></div>
+    <div class="neg"><div class="hd"><b>W</b><h3>약점</h3></div><p>처음 배우기 어렵다</p><p>1인 월 2만 원, 가장 비쌈</p></div>
+    <div><div class="hd"><b>O</b><h3>기회</h3></div><p>메일과 메신저를 한 곳으로</p><p>협력사와 같은 화면</p></div>
+    <div class="neg"><div class="hd"><b>T</b><h3>위협</h3></div><p>알림 피로로 꺼 두는 사람</p><p>보안 검토 지연</p></div>
+  </div>${D.src('quad: 2×2 네 칸. SWOT 은 S, W, O, T. 부정 칸은 neg(회색). 2×2 정리에도 쓴다')}`),
+  D.slide(6, '시범 운영 현장', `<div class="trio">
+    <figure><img src="img/hero.svg" alt="큰 이미지 자리"><figcaption><b>회의실</b>trio: 큰 이미지 하나</figcaption></figure>
+    <figure><img src="img/wide.svg" alt="이미지 자리"><figcaption><b>보드</b>작은 이미지</figcaption></figure>
+    <figure><img src="img/shot.svg" alt="이미지 자리"><figcaption><b>알림</b>작은 이미지</figcaption></figure>
+  </div>${D.src('trio: 이미지 셋, 하나를 크게. 화면 캡처면 trio fit(자르지 않음). 셋이 같은 무게면 gal g3, 폰 화면이면 scr n3')}`),
   D.slide(6, '두 후보 나란히', `<div class="two even" style="flex:none">
     <div class="cd hot"><span class="k">후보 B</span><h3>기능 많고 비쌈</h3><ul><li>이슈 보드와 자동화</li><li>1인 월 2만 원</li></ul></div>
     <div class="cd"><span class="k">후보 C</span><h3>싸고 가벼움</h3><ul><li>메신저 중심</li><li class="minus">권한 관리 단순</li></ul></div>
@@ -253,7 +270,9 @@ const slides = [
 
 const names = Object.keys(PRESETS)
 D.write(fileURLToPath(new URL('./gallery.html', import.meta.url)), slides, {
-  css: names.map(n => themeCss(n, `body[data-theme="${n}"]`)).join('\n') + '\n#theme{height:44px;border-radius:999px;padding:0 14px;background:var(--stage-2);color:#fff;border:1px solid var(--bar-line);font:600 14px var(--body)}',
-  bar: `<select id="theme" aria-label="테마">${names.map(n => `<option>${n}</option>`).join('')}</select>`,
-  js: `;document.getElementById('theme').onchange=e=>{document.body.dataset.theme=e.target.value}`,
+  css: names.map(n => themeCss(n, `body[data-theme="${n}"]`)).join('\n')
+    + '\n' + Object.entries(RULES).map(([k, v]) => `body[data-rules="${k}"]{--rule:${v}}`).join('\n')
+    + '\n#theme,#rules{height:44px;border-radius:999px;padding:0 14px;background:var(--stage-2);color:#fff;border:1px solid var(--bar-line);font:600 14px var(--body)}',
+  bar: `<select id="theme" aria-label="테마">${names.map(n => `<option>${n}</option>`).join('')}</select><select id="rules" aria-label="블록 위 선">${Object.keys(RULES).map(k => `<option value="${k}">선 ${{ bold: '굵게', light: '얇게', none: '없음' }[k]}</option>`).join('')}</select>`,
+  js: `;document.getElementById('theme').onchange=e=>{document.body.dataset.theme=e.target.value};document.getElementById('rules').onchange=e=>{document.body.dataset.rules=e.target.value}`,
 })

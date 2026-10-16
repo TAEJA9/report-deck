@@ -66,7 +66,7 @@
 
 /* 표 */
 .tbl { width: 100%; border-collapse: collapse; margin-top: 50px; }
-.tbl th { text-align: left; font: 700 26px var(--display); color: var(--blue); padding: 0 24px 18px 0; border-bottom: 4px solid var(--ink); }
+.tbl th { text-align: left; font: 700 26px var(--display); color: var(--blue); padding: 0 24px 18px 0; border-bottom: var(--rule); }
 .tbl td { font: 500 28px/1.4 var(--body); padding: 20px 24px 20px 0; border-bottom: 2px solid var(--line); vertical-align: top; }
 .tbl td:first-child { font: 700 30px var(--display); }
 .tbl td.num { font: 900 40px var(--display); letter-spacing: -0.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }

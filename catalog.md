@@ -152,7 +152,7 @@
 
 ### care — 큰 이미지 + 이름표 줄 · 언제: 이미지 하나를 자세히 설명
 ```html
-<div class="care"><img src="img/x.jpg" alt="…"><div class="lr" style="border-top:4px solid var(--ink)">
+<div class="care"><img src="img/x.jpg" alt="…"><div class="lr" style="border-top:var(--rule)">
   <div><b>이름</b><p>설명</p></div> …
 </div></div>
 ```
@@ -233,3 +233,16 @@ D.slide(`<span style="color:var(--ours)">${D.sec(6)}</span>`, '우리에게 적�
 | shotx | 화면 하나와 오른쪽 설명 목록 | `.shotx.wide` 안에 `.imgs > figure` 와 `.txt > ul.bl` |
 | ev | 번호 목록 2열(잘한 점, 원칙) | `.ev > .it` 안에 `i`(번호) 와 `div(h3, p)`. 부정은 `ev bad` |
 | two even + cd | 둘을 카드로 나란히 | `.two.even` 안에 `.cd` 둘 |
+
+## 로드맵, 네 칸, 이미지 셋
+
+| 틀 | 언제 | 핵심 마크업 |
+|---|---|---|
+| phase | 단계별 로드맵. 단계마다 목표와 할 일이 있을 때 | `.phase > div`(끝난 단계 `done`, 지금 `now`) 안에 `.when`(시기) `h3`(단계) `.goal`(목표) `p`(할 일) |
+| road | 날짜 찍힌 마일스톤만 보여 줄 때 | 위 "본문 틀"의 road |
+| gantt | 일이 여러 개고 기간이 겹칠 때 | 위 "일반 보고 틀"의 gantt |
+| quad | SWOT, 2×2 정리 | `.quad > div`(부정 칸 `neg`) 안에 `.hd`(b 글자, h3 이름) 와 `p` 여럿 |
+| trio | 이미지 셋, 하나를 크게 | `.trio > figure`(img, figcaption) 셋. 화면 캡처면 `trio fit` |
+
+로드맵 고르기: 날짜만이면 road, 단계와 목표가 핵심이면 phase, 일이 겹치는 일정표면 gantt.
+이미지 셋 고르기: 하나가 주인공이면 trio, 셋이 같은 무게면 gal g3(사진, 배너), 폰 화면이면 scr n3, 배너와 설명을 나란히면 irow.

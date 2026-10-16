@@ -57,6 +57,11 @@ node build.mjs
 node <스킬 경로>/kit/shot.cjs deck.html 1,4,7   # 넘친 장, 위계가 무너진 장을 알려 주고 캡처를 남긴다
 ```
 
+### 결과 받는 방식
+
+- 기본은 아티팩트(Claude Code 가 claude.ai 와 연결돼 있을 때). 덱을 올리고 비공개 링크를 준다.
+- "파일로", "올리지 말고" 라고 하면 게시하지 않는다. 메일이나 메신저로 보낼 거면 이미지까지 html 안에 넣은 파일 하나(`D.write(out, slides, { inline: true })`)를, 경로만 원하면 `deck.html` 경로를 준다.
+
 ## 테마
 
 ```js

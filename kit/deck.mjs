@@ -1,5 +1,6 @@
 // 덱 엔진. 프로젝트의 build.mjs 는 내용만 쓰고 이걸 불러 쓴다. CSS·뷰어는 이 kit 한 곳에서만 읽는다(복사 금지).
 import fs from 'node:fs'
+import { pathToFileURL } from 'node:url'
 import { themeCss } from './theme.mjs'
 export { PRESETS, themeCss } from './theme.mjs'
 const KIT = new URL('./', import.meta.url)
@@ -54,8 +55,14 @@ ${slides.map((x, i) => x.replace(/<span class="pg">\d+<\/span>/, `<span class="p
 </nav>
 <script>${read('viewer.js')}${extra.js || ''}</script>
 `
-    fs.writeFileSync(out, html)
-    console.log(out, 'slides', slides.length, 'bytes', html.length)
+    // inline: 이미지를 html 안에 넣어 파일 하나로 (아티팩트 없이 파일로 줄 때)
+    const final = extra.inline ? html.replace(/src="(?!data:|https?:)([^"]+)"/g, (m, f) => {
+      const file = new URL(f, pathToFileURL(out)), ext = f.split('.').pop().toLowerCase()
+      const type = { svg: 'image/svg+xml', jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'image/gif' }[ext]
+      return type && fs.existsSync(file) ? `src="data:${type};base64,${fs.readFileSync(file).toString('base64')}"` : m
+    }) : html
+    fs.writeFileSync(out, final)
+    console.log(out, 'slides', slides.length, 'bytes', final.length)
   }
   return { sec, cover, toc, div, slide, close, src, write }
 }

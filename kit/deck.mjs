@@ -11,7 +11,7 @@ export function deck({ title, sections = [], logo = '', theme = 'blue' }) {
   const pg = '<span class="pg">0</span>'
   const sec = n => `0${n} ${names[n - 1]}`
 
-  const cover = ({ logoImg, line1, line2, meta, img, imgAlt = '', stats }) => `<section class="slide s-cover"><div class="left">${logoImg ? `<img class="mxlogo" src="${logoImg}" alt="">` : ''}<h1>${line1}<br><span class="g">${line2}</span></h1><div class="meta">${meta}</div></div>${img ? `<div class="right"><img src="${img}" alt="${imgAlt}"></div>` : stats ? `<div class="right stats"><div class="cover-stats">${stats.map(([b, s]) => `<div class="cs"><b>${b}</b><span>${s}</span></div>`).join('')}</div></div>` : ''}</section>`
+  const cover = ({ logoImg, line1, line2, meta, img, imgAlt = '', stats }) => `<section class="slide s-cover${img || stats ? '' : ' plain'}"><div class="left">${logoImg ? `<img class="mxlogo" src="${logoImg}" alt="">` : ''}<h1>${line1}<br><span class="g">${line2}</span></h1><div class="meta">${meta}</div></div>${img ? `<div class="right"><img src="${img}" alt="${imgAlt}"></div>` : stats ? `<div class="right stats"><div class="cover-stats">${stats.map(([b, s]) => `<div class="cs"><b>${b}</b><span>${s}</span></div>`).join('')}</div></div>` : ''}</section>`
 
   const toc = (eyebrow = title, hot = sections.length - 1) => {
     const n = sections.length, cls = n === 5 ? ' toc5' : n === 6 ? ' toc5 toc6' : ''

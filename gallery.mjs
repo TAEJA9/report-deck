@@ -15,6 +15,7 @@ const D = deck({
 
 const slides = [
   D.cover({ line1: '협업 도구', line2: '도입 검토', meta: '견본 덱, 예시 데이터<br>장 틀과 테마를 확인하는 용도', stats: [['3<small>개</small>', '비교한 후보'], ['42<small>%</small>', '회의 시간 감소(예시)'], ['6<small>주</small>', '시범 운영 기간']] }),
+  D.cover({ line1: '표지', line2: '글자형', meta: '이미지도 숫자도 없을 때<br>정기 보고처럼 매번 같은 모양' }),
   D.cover({ line1: '표지', line2: '이미지형', meta: '오른쪽에 대표 이미지(서비스 메인 화면 등)<br>logoImg 로 로고도 넣을 수 있다', img: 'img/hero.svg', imgAlt: '대표 이미지 자리' }),
   D.toc('report-deck 견본'),
   D.div(0),

@@ -268,3 +268,8 @@
 /* 위계: 장 제목(h2 76px) > 블록 제목(30~36px) > 본문(24~30px). 큰 숫자만 예외(80px 이하) */
 .cd h3, .dv h3 { font-size: 34px; } .cards.c4 .cd h3 { font-size: 30px; }
 .ov .v, .s-ov .ov .v { font-size: 36px; } .fx h3, .vc h3 { font-size: 34px; }
+
+/* 표지 글자형: 이미지도 숫자도 없을 때. 제목을 넓게 쓰고 왼쪽에 키 컬러 띠 */
+.s-cover.plain .left { width: 1500px; }
+.s-cover.plain::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 24px; background: var(--grad); }
+.s-cover.plain h1 { font-size: 140px; }

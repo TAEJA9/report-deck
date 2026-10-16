@@ -33,6 +33,9 @@ export function deck({ title, sections = [], logo = '', theme = 'blue' }) {
     const text = slides.join('\n').replace(/<[^>]+>/g, ' ')
     const bad = [...new Set(text.match(/[—–·…•]/g) || [])]
     if (bad.length) console.warn('⚠ 금지 문장부호:', bad.join(' '), '(쉼표나 "와/과"로 바꿀 것)')
+    // notes: 장마다 발표 노트(글자). 장 수와 같은 길이의 배열, 없는 장은 ''. 하단 '노트' 버튼이나 N 키로 연다
+    const notes = extra.notes?.length ? slides.map((_, i) => extra.notes[i] || '') : null
+    if (extra.notes && extra.notes.length !== slides.length) console.warn(`⚠ 노트 ${extra.notes.length}개, 장 ${slides.length}장: 순서가 맞는지 확인`)
     const css = ['deck.css', 'extra.css', 'review.css', 'parts.css'].map(read).join('\n') + '\n' + themeCss(theme) + (extra.css || '')
     const html = `<title>${title}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,9 +54,12 @@ ${slides.map((x, i) => x.replace(/<span class="pg">\d+<\/span>/, `<span class="p
   <span class="dots nav-only" id="dots"></span>
   <span class="sp"></span>
   ${extra.bar || ''}
+  ${notes ? '<button type="button" id="nt" title="발표 노트 (N)" class="nav-only" aria-pressed="false">노트</button>' : ''}
   <button type="button" id="fs" title="전체 화면 (F)" class="nav-only">전체 화면</button>
 </nav>
-<script>${read('viewer.js')}${extra.js || ''}</script>
+${notes ? `<aside class="notes" id="notesBox" aria-label="발표 노트"></aside>
+<script type="application/json" id="notes">${JSON.stringify(notes).replace(/</g, '\u003c')}</script>
+` : ''}<script>${read('viewer.js')}${extra.js || ''}</script>
 `
     // inline: 이미지를 html 안에 넣어 파일 하나로 (아티팩트 없이 파일로 줄 때)
     const final = extra.inline ? html.replace(/src="(?!data:|https?:)([^"]+)"/g, (m, f) => {

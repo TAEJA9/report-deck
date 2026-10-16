@@ -14,7 +14,7 @@ export function deck({ title, sections = [], logo = '', theme = 'blue', divStyle
 
   const cover = ({ logoImg, line1, line2, meta, img, imgAlt = '', imgFit, stats }) => `<section class="slide s-cover${img || stats ? '' : ' plain'}"><div class="left">${logoImg ? `<img class="mxlogo" src="${logoImg}" alt="">` : ''}<h1>${line1}<br><span class="g">${line2}</span></h1><div class="meta">${meta}</div></div>${img ? `<div class="right${imgFit === 'contain' ? ' fit' : ''}"><img src="${img}" alt="${imgAlt}"></div>` : stats ? `<div class="right stats"><div class="cover-stats">${stats.map(([b, s]) => `<div class="cs"><b>${b}</b><span>${s}</span></div>`).join('')}</div></div>` : ''}</section>`
 
-  const toc = (eyebrow = title, hot = sections.length - 1) => {
+  const toc = (eyebrow = title, hot = -1) => { // hot: 강조할 섹션 번호(0부터). 기본은 강조 없음
     const n = sections.length, cls = n === 5 ? ' toc5' : n === 6 ? ' toc5 toc6' : ''
     const st = n <= 4 ? ` style="grid-template-columns:repeat(${n},minmax(0,1fr))"` : ''
     return `<section class="slide s-toc"><div class="pad"><div class="eyebrow">${eyebrow}</div><h2>목차</h2><div class="toc${cls}"${st}>${sections.map((s, i) => `<div class="ti${i === hot ? ' hot' : ''}"><span class="n">0${i + 1}</span><h3>${s.name}</h3><ul>${(s.sub || '').split(', ').filter(Boolean).map(x => `<li>${x}</li>`).join('')}</ul></div>`).join('')}</div></div>${logoHtml}${pg}</section>`

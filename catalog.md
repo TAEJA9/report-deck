@@ -8,7 +8,7 @@
 
 | 틀 | 호출 |
 |---|---|
-| 표지(이미지) | `D.cover({ logoImg:'img/logo.png', line1:'서비스 이름', line2:'분석 보고', meta:'2026년 10월, 팀 이름<br>한 줄 설명', img:'img/hero.jpg', imgAlt:'…' })` |
+| 표지(이미지) | 사진이면 그대로, 화면 캡처면 `imgFit:'contain'` 을 더해 자르지 않는다. `D.cover({ logoImg:'img/logo.png', line1:'서비스 이름', line2:'분석 보고', meta:'2026년 10월, 팀 이름<br>한 줄 설명', img:'img/hero.jpg', imgAlt:'…' })` |
 | 표지(숫자) | `D.cover({ line1, line2, meta, stats:[['24<small>장</small>','설명'], …] })` 숫자 2~3개 |
 | 표지(글자형) | `D.cover({ line1, line2, meta })` 이미지도 숫자도 장식도 없이 제목만. 정기 보고처럼 매번 같은 모양이 좋을 때 |
 

@@ -394,3 +394,7 @@
 
 /* msgl: 핵심 메시지 한 줄(제목 아래, 제목보다 작게) */
 .msgl { margin: 40px 0 0; font: 900 44px/1.35 var(--display); letter-spacing: -0.03em; color: var(--blue); max-width: 1500px; }
+
+/* 표지 이미지가 화면 캡처일 때: imgFit: 'contain' 이면 자르지 않고 통째로, 연한 바탕 위에 */
+.s-cover .right.fit { display: flex; align-items: center; justify-content: center; padding: 64px; background: var(--sky); }
+.s-cover .right.fit img { width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: 20px; box-shadow: 0 20px 50px rgba(15, 27, 51, .14); }

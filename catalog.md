@@ -189,3 +189,31 @@ D.slide(`<span style="color:var(--ours)">${D.sec(6)}</span>`, '우리에게 적�
 
 ### 그 밖에 원래 덱에 있던 부품
 `.cards.c3/.c4` 안 `.cd`(카드, `.cd.hot` 강조), `.loop`(가로 흐름), `.steps`(칩 흐름), `.ev`(번호 목록 2열), `.gal.g3/.g4`(이미지 카드), `.ph`(폰 화면 + 설명), `.flex-note`(하늘색 결론 띠), `.lead`(큰 문단). 쓸 때 `.cd` 의 글머리 점은 parts.css 에서 꺼 두지 않았으니 `ul` 대신 `p` 를 쓴다.
+
+## 일반 보고 틀
+
+정확한 마크업은 `gallery.mjs` 의 "더 많은 틀" 섹션(같은 이름의 장)을 그대로 따라 쓴다.
+
+| 틀 | 언제 | 핵심 마크업 |
+|---|---|---|
+| sum | 맨 앞 요약. 핵심 문장 셋과 근거 | `.sum > div` 안에 `i`(번호) `h3`(핵심) `p`(근거) |
+| msgl + msg | 한 장에 메시지 하나. 제목 아래 한 줄 메시지, 근거 숫자 셋 | `<p class="msgl">` 다음 `.msg > div` 안에 `b`(숫자) `span` |
+| hero | 숫자 하나가 장의 전부일 때 | `.hero` 안에 `b`(숫자, small 단위) 와 `div`(h3, p) |
+| ba | 전후 비교, 지금과 바뀐 뒤 | `.ba` 안에 `.bf`, `.to`(→), `.af`. 각 칸 `.k` `h3` `p` |
+| flow2 | 절차, 단계 3~6개 | `.flow2 > div` 안에 `i`(번호) `h3` `p`. 강조 단계는 `class="key"` |
+| gantt | 일정표 | `.gantt style="--n:기간 수"`. 머리 `span.h`, 행마다 `span.t` 와 `span.gbar style="grid-column:시작 / 끝"`(이름 열이 1열). `gbar hot` 강조, `gbar ms` 마일스톤 |
+| hbar | 순위, 항목별 크기 비교 | `.hbar > div` 안에 `.l` `.tr > i style="width:%"` `b`. 강조 행 `class="hot"` |
+| stack | 구성비, 전후 구성 변화 | `.stack > div` 안에 `.l` `.tr > span.c1~c4 style="width:%"`, 아래 `.leg` 범례 |
+| donut | 비율 한 가지 | `.pie style="background:conic-gradient(...)"` 안에 `b`(합계), 옆 `ul > li`(i.c1~c4, 이름, b 비율) |
+| funnel | 단계별 이탈, 전환율 | `.funnel > div style="width:…px"` 안에 `h3`(이름 small 수), 둘째부터 `em`(전환율) |
+| tbl fx2 | 기능 비교 매트릭스 | 칸에 `<span class="yes">있음</span>`, `part`(일부), `no2`(없음). 글자를 꼭 같이 쓴다 |
+| team | 담당자, 역할 | `.team style="--n:인원"` 안에 `img`(사진, 없으면 뺀다) `.r`(역할) `h3`(이름) `p` |
+| faq | 예상 질문과 답 | `.faq > div` 안에 `h3`(질문, Q 는 자동) `p`(답) |
+| voices2 | 인용 여러 개 | `.voices2 > div` 안에 `p`(인용) `span`(누가, 언제) |
+| met + em | 지난 기간 대비 증감 | met 칸의 `b` 다음 `<em class="up">+8%p</em>` 또는 `down` |
+| 표 + pill | 다음 할 일(담당, 기한, 상태) | `tbl` 에 상태 칸 `<span class="pill">진행</span>`, `pill pr` |
+
+## 그림, 아이콘
+
+- 그림은 자료에 있는 이미지(화면 캡처, 로고, 사진)만 쓴다. 이미지 틀(irow, callg, scr, care, team, 이미지형 표지)에 넣는다.
+- 장식용 아이콘, 이모지, 색 띠, 배경 무늬는 넣지 않는다. 아이콘이 꼭 필요하면 뜻이 있는 자리(채널 종류, 기기 종류 등)에만, 한 가지 선 아이콘 세트로, 글자와 같이 쓴다.

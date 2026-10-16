@@ -10,6 +10,7 @@ const D = deck({
     { name: '비교', sub: '후보 비교, 비용, 응답 속도' },
     { name: '평가', sub: '좋은 점, 걱정되는 점' },
     { name: '결론', sub: '권장안, 일정' },
+    { name: '더 많은 틀', sub: '요약, 강조, 일정, 비율, 비교, 사람, 질문' },
   ],
 })
 
@@ -130,6 +131,74 @@ const slides = [
   </div><div><div class="who"><span class="k">후보 B</span><h3>기능 많고 비쌈</h3><p>이슈 중심 팀에 맞다</p></div><div class="who sp"><span class="k">후보 C</span><h3>싸고 가벼움</h3><p>작은 팀에 맞다</p></div></div></div>${D.src('pos: 2축 위치 지도, 정성 판단')}`),
   D.slide(4, '권장안', `<div class="ap"><div><h3>권장</h3><p><b>후보 B로 확대.</b>두 팀 요구를 가장 많이 채움</p><p><b>알림 기본값 정리.</b>언급만 받기</p></div>
   <div><h3 class="no">남은 위험</h3><p><b>보안 검토.</b>외부 계정 전에</p><h3 class="ok">다음 측정</h3><p><b>회의 시간.</b>12월 말 다시 재기</p></div></div>`),
+  D.div(4),
+  D.slide(5, '세 줄 요약', `<div class="sum">
+    <div><i>01</i><h3>회의 시간이 40% 줄었다</h3><p>sum: 핵심 문장과 오른쪽 근거. 주 6시간에서 3.5시간</p></div>
+    <div><i>02</i><h3>문서를 찾는 시간이 절반으로</h3><p>검색 한 번에 찾는 비율 45%에서 82%</p></div>
+    <div><i>03</i><h3>보안 검토 하나가 남았다</h3><p>외부 계정 권한 검토, 12월 첫 주</p></div>
+  </div>`),
+  D.slide(5, '시범 운영의 핵심 결과', `<p class="msgl">회의는 결정만 하고, 나머지는 문서로 옮겨 갔다</p><div class="msg">
+    <div><b>-40%</b><span>주간 회의 시간</span></div><div><b>82%</b><span>검색 한 번에 찾은 비율</span></div><div><b>24명</b><span>6주 동안 매일 쓴 사람</span></div>
+  </div>${D.src('msgl + msg: 핵심 메시지 한 줄과 근거 숫자 셋')}`),
+  D.slide(5, '줄어든 회의 시간', `<div class="hero"><b>42<small>%</small></b><div><h3>주간 회의 시간 감소</h3><p>hero: 숫자 하나가 장의 전부일 때. 6주 시범 기간, 두 팀 24명 기준(예시)</p></div></div>`),
+  D.slide(5, '회의 방식 전후', `<div class="ba">
+    <div class="bf"><span class="k">전</span><h3>모여서 정리</h3><p>안건을 회의에서 처음 봄</p><p>결정과 할 일이 메일에 흩어짐</p></div>
+    <div class="to">→</div>
+    <div class="af"><span class="k">후</span><h3>읽고 와서 결정</h3><p>안건을 하루 전 문서로</p><p>결정과 할 일이 보드에 바로</p></div>
+  </div>${D.src('ba: 전후 비교')}`),
+  D.slide(5, '도입 절차', `<div class="flow2">
+    <div><i>1</i><h3>계정 발급</h3><p>팀별 초대 링크</p></div><div><i>2</i><h3>문서 옮기기</h3><p>최근 3개월치만</p></div>
+    <div class="key"><i>3</i><h3>실사용</h3><p>모든 회의를 새 도구로</p></div><div><i>4</i><h3>평가</h3><p>설문과 사용 기록</p></div>
+  </div>${D.src('flow2: 단계 흐름, 강조 단계는 key')}`),
+  D.slide(5, '도입 일정', `<div class="gantt" style="--n:6">
+    <span></span>${['10월', '11월', '12월', '1월', '2월', '3월'].map(m => `<span class="h">${m}</span>`).join('')}
+    <span class="t">후보 비교</span><span class="gbar" style="grid-column:2 / 3">비교</span>
+    <span class="t">시범 운영</span><span class="gbar hot" style="grid-column:3 / 5">2개 팀, 6주</span>
+    <span class="t">보안 검토</span><span class="gbar" style="grid-column:4 / 5">외부 계정</span>
+    <span class="t">전사 도입</span><span class="gbar" style="grid-column:5 / 8">단계별 확대</span>
+    <span class="t">평가 보고</span><span class="gbar ms" style="grid-column:5 / 6">1월 말</span>
+  </div>${D.src('gantt: 열 = 기간, 막대는 grid-column 으로 위치. ms 는 마일스톤')}`),
+  D.slide(5, '팀별 하루 사용 시간', `<div class="hbar">
+    ${[['개발팀', 96], ['기획팀', 78], ['디자인팀', 54], ['영업팀', 31]].map(([l, v], i) => `<div class="${i ? '' : 'hot'}"><span class="l">${l}</span><span class="tr"><i style="width:${v / 96 * 100}%"></i></span><b>${v}분</b></div>`).join('')}
+  </div>${D.src('hbar: 가로 막대 순위. 막대 길이 = 값')}`),
+  D.slide(5, '업무 연락 채널 구성', `<div class="stack">
+    <div><span class="l">도입 전</span><span class="tr"><span class="c2" style="width:55%">메일 55%</span><span class="c3x" style="width:30%">메신저 30%</span><span class="c4" style="width:15%">기타</span></span></div>
+    <div><span class="l">도입 후</span><span class="tr"><span class="c1" style="width:60%">새 도구 60%</span><span class="c2" style="width:25%">메일 25%</span><span class="c3x" style="width:15%">메신저</span></span></div>
+  </div><div class="leg"><span><i class="c1"></i>새 도구</span><span><i class="c2"></i>메일</span><span><i class="c3x"></i>메신저</span><span><i class="c4"></i>기타</span></div>${D.src('stack: 100% 누적 막대, 구성비')}`),
+  D.slide(5, '알림 종류 비율', `<div class="donut"><div class="pie" style="background:conic-gradient(var(--blue) 0 48%, var(--sky-2) 0 78%, var(--grey-bar) 0 92%, #e8ebf0 0 100%)"><b>1,240<small>건, 하루 평균</small></b></div>
+    <ul><li><i class="c1"></i>언급<b>48%</b></li><li><i class="c2"></i>댓글<b>30%</b></li><li><i class="c3x"></i>마감<b>14%</b></li><li><i class="c4"></i>기타<b>8%</b></li></ul></div>`),
+  D.slide(5, '가입에서 정착까지', `<div class="funnel">
+    <div style="width:1200px"><h3>초대 받음<small>120명</small></h3></div>
+    <div style="width:1000px"><h3>가입<small>104명</small></h3><em>87%</em></div>
+    <div style="width:760px"><h3>첫 주 사용<small>80명</small></h3><em>77%</em></div>
+    <div style="width:560px"><h3>6주 정착<small>62명</small></h3><em>78%</em></div>
+  </div>${D.src('funnel: 단계별 수와 전환율. 폭은 수에 비례해 직접 정한다')}`),
+  D.slide(5, '후보별 기능 비교', `<table class="tbl fx2" style="margin-top:48px"><thead><tr><th style="width:30%">기능</th><th>후보 A</th><th>후보 B</th><th>후보 C</th></tr></thead><tbody>
+    <tr><td>문서 버전 기록</td><td><span class="yes">있음</span></td><td><span class="yes">있음</span></td><td><span class="part">일부</span></td></tr>
+    <tr><td>이슈 보드</td><td><span class="no2">없음</span></td><td><span class="yes">있음</span></td><td><span class="no2">없음</span></td></tr>
+    <tr><td>자동화 규칙</td><td><span class="part">일부</span></td><td><span class="yes">있음</span></td><td><span class="no2">없음</span></td></tr>
+    <tr><td>외부 계정</td><td><span class="yes">있음</span></td><td><span class="yes">있음</span></td><td><span class="part">일부</span></td></tr>
+  </tbody></table>${D.src('tbl fx2: 기능 비교 매트릭스, 있음, 일부, 없음은 글자로도 적는다')}`),
+  D.slide(5, '도입 담당', `<div class="team" style="--n:4">
+    ${[['김하나', '총괄', '일정과 예산'], ['이도윤', '기획팀', '문서 옮기기, 교육'], ['박서준', '개발팀', '연동, 알림 규칙'], ['최유리', '보안', '외부 계정 검토']].map(([n, r, p]) => `<div><img src="img/square.svg" alt=""><span class="r">${r}</span><h3>${n}</h3><p>${p}</p></div>`).join('')}
+  </div>${D.src('team: 사람과 역할. 사진이 없으면 img 를 뺀다. 이름은 예시')}`),
+  D.slide(5, '자주 받은 질문', `<div class="faq">
+    <div><h3>기존 메일은 어떻게 되나요?</h3><p>최근 3개월치만 옮기고, 나머지는 메일에 그대로 둡니다</p></div>
+    <div><h3>외부 협력사도 쓸 수 있나요?</h3><p>보안 검토가 끝나는 12월부터 가능합니다</p></div>
+    <div><h3>모바일에서도 되나요?</h3><p>앱이 있고, 알림은 언급만 받게 기본값을 둡니다</p></div>
+    <div><h3>비용은 누가 내나요?</h3><p>시범 기간은 무료, 이후는 팀 예산에서</p></div>
+  </div>`),
+  D.slide(5, '사용자 의견', `<div class="voices2">
+    <div><p>“회의 전에 안건을 읽고 오니 회의가 짧아졌어요”</p><span>기획팀, 시범 3주차</span></div>
+    <div><p>“배포 알림이 한곳에 모여서 확인할 데가 줄었어요”</p><span>개발팀, 시범 4주차</span></div>
+    <div><p>“알림이 너무 많아서 처음엔 꺼 두었어요”</p><span>디자인팀, 시범 1주차</span></div>
+  </div>${D.src('voices2: 인용 여러 개')}`),
+  D.slide(5, '핵심 지표 변화', `<div class="met" style="margin-top:72px">
+    <div><b>3.5<small>시간</small></b><em class="up">-2.5시간</em><span>주간 회의</span></div>
+    <div><b>82<small>%</small></b><em class="up">+37%p</em><span>검색 한 번에 찾음</span></div>
+    <div><b>62<small>명</small></b><em class="up">+62명</em><span>6주 정착 사용자</span></div>
+    <div class="warn"><b>1<small>건</small></b><em class="down">미해결</em><span>보안 검토</span></div>
+  </div>${D.src('met + em: 지난 기간 대비 증감')}`),
   D.close({ h: '후보 B로<br>전사 도입 준비', lead: '정리 장. 핵심 문장 세 줄 이내와 기억할 것 몇 개를 알약으로 둔다.', facts: ['후보 B', '알림 규칙', '보안 검토', '1월 전사 도입'] }),
 ]
 

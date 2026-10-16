@@ -272,3 +272,125 @@
 /* 표지 글자형: 이미지도 숫자도 없을 때. 장식 없이 제목만 넓게 */
 .s-cover.plain .left { width: 1500px; }
 .s-cover.plain h1 { font-size: 140px; }
+
+/* ── 일반 보고 덱 틀 (10/16 추가) ── */
+/* sum: 요약 세 줄. 번호, 핵심 문장, 근거 */
+.sum { display: flex; flex-direction: column; margin-top: 48px; border-top: 4px solid var(--ink); }
+.sum > div { display: grid; grid-template-columns: 90px minmax(0, 1fr) 520px; gap: 32px; align-items: baseline; padding: 30px 0; border-bottom: 2px solid var(--line); }
+.sum i { font: normal 900 40px/1 var(--display); color: var(--blue); }
+.sum h3 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.3; }
+.sum p { margin: 0; font: 500 25px/1.45 var(--body); color: var(--sub); }
+
+/* msg: 한 문장 강조. 제목이 메시지, 아래 근거 셋 */
+.msg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px; margin-top: auto; margin-bottom: auto; }
+.msg > div { border-top: 4px solid var(--ink); padding-top: 22px; }
+.msg b { display: block; font: 900 56px/1.1 var(--display); letter-spacing: -0.03em; color: var(--blue); }
+.msg span { display: block; margin-top: 10px; font: 500 26px/1.45 var(--body); color: var(--sub); }
+
+/* hero: 큰 숫자 하나 */
+.hero { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 80px; align-items: center; margin-block: auto; }
+.hero b { font: 900 220px/1 var(--display); letter-spacing: -0.06em; color: var(--blue); font-variant-numeric: tabular-nums; }
+.hero b small { font-size: 80px; margin-left: 8px; letter-spacing: -0.02em; }
+.hero h3 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.3; }
+.hero p { margin: 14px 0 0; font: 500 28px/1.5 var(--body); color: var(--sub); }
+
+/* ba: 전후 비교 */
+.ba { display: grid; grid-template-columns: minmax(0, 1fr) 80px minmax(0, 1fr); align-items: stretch; margin-top: 48px; }
+.ba > div { border-radius: 28px; padding: 40px 44px; display: flex; flex-direction: column; gap: 16px; }
+.ba .bf { background: #f2f3f6; } .ba .af { background: var(--sky); }
+.ba .k { font: 800 26px var(--display); color: var(--sub); } .ba .af .k { color: var(--blue); }
+.ba h3 { font-size: 34px; font-weight: 900; letter-spacing: -0.02em; }
+.ba p { margin: 0; font: 500 27px/1.45 var(--body); color: var(--sub); } .ba .af p { color: var(--ink); }
+.ba .to { display: flex; align-items: center; justify-content: center; font: 900 44px var(--display); color: var(--grey-bar); background: none; padding: 0; }
+
+/* flow2: 단계 흐름. 번호 원과 화살표 */
+.flow2 { display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; margin-top: 56px; }
+.flow2 > div { position: relative; padding: 0 56px 0 0; display: flex; flex-direction: column; gap: 12px; }
+.flow2 > div:not(:last-child)::after { content: "→"; position: absolute; right: 10px; top: 6px; font: 900 34px var(--display); color: var(--grey-bar); }
+.flow2 i { font: normal 900 26px var(--display); color: #fff; background: var(--blue); width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; }
+.flow2 h3 { font-size: 32px; font-weight: 900; letter-spacing: -0.02em; margin-top: 8px; }
+.flow2 p { margin: 0; font: 500 25px/1.45 var(--body); color: var(--sub); }
+.flow2 .key i { background: var(--grad); }
+
+/* gantt: 일정표. 행 = 일, 열 = 기간. 막대 위치는 style="grid-column: 시작열 / 끝열" (첫 열이 이름이라 기간 1칸 = 2열) */
+.gantt { margin-top: 48px; display: grid; grid-template-columns: 300px repeat(var(--n, 6), minmax(0, 1fr)); row-gap: 14px; }
+.gantt .h { font: 700 24px var(--display); color: var(--sub); padding-bottom: 12px; border-bottom: 3px solid var(--ink); }
+.gantt .t { grid-column: 1; font: 700 27px var(--display); align-self: center; padding-right: 20px; }
+.gantt .gbar { height: 44px; border-radius: 10px; background: var(--sky-2); align-self: center; display: flex; align-items: center; padding: 0 16px; font: 700 22px var(--display); color: var(--blue-deep); white-space: nowrap; overflow: hidden; }
+.gantt .gbar.hot { background: var(--grad); color: #fff; }
+.gantt .gbar.ms { background: none; padding: 0; color: var(--blue); overflow: visible; }
+.gantt .gbar.ms::before { content: ""; flex: none; width: 22px; height: 22px; background: var(--blue); transform: rotate(45deg); margin-right: 14px; border-radius: 3px; }
+
+/* hbar: 가로 막대 순위 */
+.hbar { display: flex; flex-direction: column; gap: 22px; margin-top: 52px; }
+.hbar > div { display: grid; grid-template-columns: 300px minmax(0, 1fr) 150px; gap: 28px; align-items: center; }
+.hbar .l { font: 700 28px var(--display); }
+.hbar .tr { height: 40px; background: #f0f2f6; border-radius: 8px; overflow: hidden; }
+.hbar .tr i { display: block; height: 100%; background: var(--sky-2); border-radius: 8px; }
+.hbar .hot .tr i { background: var(--grad); }
+.hbar b { font: 900 34px var(--display); text-align: right; font-variant-numeric: tabular-nums; }
+
+/* stack: 100% 누적 막대. 구성비. 조각 색은 c1~c4 */
+.stack { display: flex; flex-direction: column; gap: 30px; margin-top: 52px; }
+.stack > div { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: center; }
+.stack .l { font: 700 28px var(--display); }
+.stack .tr { display: flex; height: 60px; border-radius: 10px; overflow: hidden; gap: 3px; }
+.stack .tr span { display: flex; align-items: center; padding-left: 14px; font: 800 22px var(--display); color: var(--ink); white-space: nowrap; overflow: hidden; }
+.stack .tr span.c1 { color: #fff; }
+.leg { display: flex; flex-wrap: wrap; gap: 14px 36px; margin-top: 32px; font: 600 24px var(--body); color: var(--sub); }
+.leg i { display: inline-block; width: 22px; height: 22px; border-radius: 5px; margin-right: 10px; vertical-align: -3px; }
+.c1 { background: var(--blue); } .c2 { background: var(--sky-2); } .c3x { background: var(--grey-bar); } .c4 { background: #e8ebf0; }
+
+/* donut: 원그래프. .pie 에 style="background: conic-gradient(var(--blue) 0 48%, var(--sky-2) 0 78%, var(--grey-bar) 0 100%)" */
+.donut { display: grid; grid-template-columns: 460px minmax(0, 1fr); gap: 90px; align-items: center; margin-block: auto; }
+.donut .pie { width: 460px; height: 460px; border-radius: 50%; position: relative; }
+.donut .pie::after { content: ""; position: absolute; inset: 110px; border-radius: 50%; background: var(--paper); }
+.donut .pie b { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; font: 900 64px/1 var(--display); letter-spacing: -0.03em; }
+.donut .pie b small { margin-top: 8px; font: 600 24px var(--body); color: var(--sub); letter-spacing: 0; }
+.donut ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 4px solid var(--ink); }
+.donut li { display: grid; grid-template-columns: 30px minmax(0, 1fr) 120px; gap: 18px; align-items: center; padding: 20px 0; border-bottom: 2px solid var(--line); font: 600 28px var(--body); }
+.donut li::before { display: none; }
+.donut li i { width: 24px; height: 24px; border-radius: 6px; }
+.donut li b { font: 900 34px var(--display); text-align: right; }
+
+/* funnel: 깔때기. 각 단 width 를 style 로, 전환율은 em */
+.funnel { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 44px; }
+.funnel > div { display: flex; align-items: center; justify-content: center; height: 88px; border-radius: 14px; background: var(--sky); position: relative; }
+.funnel > div:first-child { background: var(--grad); color: #fff; }
+.funnel h3 { font-size: 30px; font-weight: 900; }
+.funnel h3 small { font: 600 24px var(--body); margin-left: 14px; opacity: .8; }
+.funnel em { position: absolute; left: calc(100% + 28px); width: 220px; font: normal 800 24px var(--display); color: var(--blue); }
+
+/* fx2: 기능 비교 매트릭스. 칸에 <span class="yes">있음</span> / part / no2 */
+.tbl.fx2 td, .tbl.fx2 th { text-align: center; } .tbl.fx2 td:first-child, .tbl.fx2 th:first-child { text-align: left; }
+.yes, .part, .no2 { display: inline-flex; align-items: center; gap: 8px; font: 700 23px var(--display); }
+.yes::before, .part::before, .no2::before { content: ""; width: 18px; height: 18px; border-radius: 50%; box-sizing: border-box; }
+.yes { color: var(--blue-deep); } .yes::before { background: var(--blue); }
+.part { color: var(--sub); } .part::before { background: linear-gradient(90deg, var(--blue) 50%, var(--sky-2) 50%); }
+.no2 { color: #8f96a3; } .no2::before { border: 3px solid #c7ccd5; }
+
+/* team: 사람, 역할 */
+.team { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 32px; margin-top: 52px; }
+.team > div { border-top: 4px solid var(--ink); padding-top: 22px; display: flex; flex-direction: column; gap: 8px; }
+.team img { width: 120px; height: 120px; border-radius: 50%; background: var(--sky); object-fit: cover; margin-bottom: 10px; }
+.team h3 { font-size: 32px; font-weight: 900; } .team .r { font: 700 24px var(--display); color: var(--blue); }
+.team p { margin: 4px 0 0; font: 500 25px/1.45 var(--body); color: var(--sub); }
+
+/* faq: 질문과 답 */
+.faq { display: grid; grid-template-columns: 1fr 1fr; gap: 0 72px; margin-top: 44px; }
+.faq > div { padding: 26px 0; border-top: 2px solid var(--line); }
+.faq h3 { font-size: 30px; font-weight: 900; letter-spacing: -0.02em; }
+.faq h3::before { content: "Q"; color: var(--blue); margin-right: 14px; }
+.faq p { margin: 10px 0 0 38px; font: 500 25px/1.5 var(--body); color: var(--sub); }
+
+/* voices2: 인용 여러 개 */
+.voices2 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 52px; }
+.voices2 > div { background: var(--sky); border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+.voices2 p { margin: 0; font: 700 30px/1.5 var(--display); letter-spacing: -0.02em; }
+.voices2 span { margin-top: auto; font: 600 23px var(--body); color: var(--sub); }
+
+/* met 증감: <div><b>42<small>%</small></b><em class="up">+8%p</em><span>설명</span></div> */
+.met em { font: normal 800 24px var(--display); } .met em.up { color: var(--blue); } .met em.down { color: var(--bad); }
+
+/* msgl: 핵심 메시지 한 줄(제목 아래, 제목보다 작게) */
+.msgl { margin: 40px 0 0; font: 900 44px/1.35 var(--display); letter-spacing: -0.03em; color: var(--blue); max-width: 1500px; }

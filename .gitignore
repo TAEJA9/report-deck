@@ -2,3 +2,5 @@ gallery.html
 s*.png
 node_modules/
 decks/
+decks/
+*.outline.md

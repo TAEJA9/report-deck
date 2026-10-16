@@ -69,6 +69,23 @@ ${notes ? `<aside class="notes" id="notesBox" aria-label="발표 노트"></aside
       return type && fs.existsSync(file) ? `src="data:${type};base64,${fs.readFileSync(file).toString('base64')}"` : m
     }) : html
     fs.writeFileSync(out, final)
+    // 글만 읽는 원고: 장 제목, 본문 글, 노트를 순서대로. 흐름과 글 다듬기용(deck.outline.md)
+    const plain = h => h
+      .replace(/<(style|script)[^>]*>[\s\S]*?<\/\1>/g, '')
+      .replace(/<br\s*\/?>/g, ' ')
+      .replace(/<\/(p|div|li|h[1-6]|tr|figcaption)>/g, '\n')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/[ \t]+/g, ' ')
+      .replace(/\n\s*\n+/g, '\n')
+      .trim()
+    const md = slides.map((x, i) => {
+      const kind = /s-cover/.test(x) ? '표지' : /s-toc/.test(x) ? '목차' : /s-div/.test(x) ? '간지' : /s-ask/.test(x) ? '정리' : ''
+      const head = plain((x.match(/<h[12][^>]*>([\s\S]*?)<\/h[12]>/) || [])[1] || '')
+      const body = plain(x.replace(/<h[12][^>]*>[\s\S]*?<\/h[12]>/, '').replace(/<span class="pg">\d+<\/span>/, ''))
+      const showBody = kind !== '간지' && kind !== '목차'
+      return `## ${i + 1}. ${head}${kind ? ` (${kind})` : ''}\n${showBody ? body + '\n' : ''}${notes?.[i] ? `\n> 노트: ${notes[i]}\n` : ''}`
+    }).join('\n')
+    fs.writeFileSync(out.replace(/\.html?$/, '') + '.outline.md', `# ${title} 원고\n\n` + md)
     console.log(out, 'slides', slides.length, 'bytes', final.length)
   }
   return { sec, cover, toc, div, slide, close, src, write }
